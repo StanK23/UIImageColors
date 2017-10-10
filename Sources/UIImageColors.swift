@@ -26,7 +26,7 @@ class PCCountedColor {
 }
 
 extension CGColor {
-    var components: [CGFloat] {
+    open var components: [CGFloat] {
         get {
             var red = CGFloat()
             var green = CGFloat()
@@ -40,17 +40,17 @@ extension CGColor {
 
 extension UIColor {
     
-    var isDarkColor: Bool {
+    open var isDarkColor: Bool {
         let RGB = self.cgColor.components
         return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
     }
     
-    var isBlackOrWhite: Bool {
+    open var isBlackOrWhite: Bool {
         let RGB = self.cgColor.components
         return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
     }
     
-    func isDistinct(compareColor: UIColor) -> Bool {
+    open func isDistinct(compareColor: UIColor) -> Bool {
         let bg = self.cgColor.components
         let fg = compareColor.cgColor.components
         let threshold: CGFloat = 0.25
@@ -66,7 +66,7 @@ extension UIColor {
         return false
     }
     
-    func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+    open func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
         var hue: CGFloat = 0.0
         var saturation: CGFloat = 0.0
         var brightness: CGFloat = 0.0
@@ -80,7 +80,7 @@ extension UIColor {
         }
     }
     
-    func isContrastingColor(compareColor: UIColor) -> Bool {
+    open func isContrastingColor(compareColor: UIColor) -> Bool {
         let bg = self.cgColor.components
         let fg = compareColor.cgColor.components
         
